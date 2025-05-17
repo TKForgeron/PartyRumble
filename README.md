@@ -1,5 +1,5 @@
 
-# 🎲 GAME GUIDE – Party Rumble
+# 🎲 Party Rumble
 
 ## 🏁 OBJECTIVE OF THE GAME
 
