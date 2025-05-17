@@ -10,6 +10,7 @@ class DeckManager:
         game_cards_file_path: str,
         game_variants_path: str,
     ):
+        self.file_loader = file_loader
         self.game_cards_file_path: str = game_cards_file_path
         self.game_variants_path: str = game_variants_path
         self.original_decks: dict[str, list[MiniGame]] = self.load_decks(file_loader)
@@ -50,8 +51,11 @@ class DeckManager:
         if category not in self.available_categories:
             raise ValueError(f"Categorie '{category}' bestaat niet.")
         if not self.decks[category]:
-            self.reshuffle_deck(category)
-        return self.decks[category].pop()
+            # self.reshuffle_deck(category)
+            self.decks[category] = self.load_decks(self.file_loader)[category]
+        card = self.decks[category].pop()
+        print("card popped:", card)
+        return card
 
     def get_available_categories(self) -> list[str]:
         return list(self.decks.keys())
