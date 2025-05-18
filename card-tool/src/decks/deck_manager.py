@@ -38,7 +38,7 @@ class DeckManager:
             else:
                 # Optionally handle missing base game
                 pass
-        random.shuffle(mini_games)
+        random.Random(10).shuffle(mini_games)
         decks: dict[str, list[MiniGame]] = {}
         for mini_game in mini_games:
             cat: str = str(mini_game.category).lower()
