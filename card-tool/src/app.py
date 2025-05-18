@@ -9,6 +9,10 @@ def get_badge(x):
     return f":orange-badge[{x}]"
 
 
+def prefix_with_index(lst):
+    return [f"{i + 1}. {item}" for i, item in enumerate(lst)]
+
+
 # Initialize DeckManager only once and store it in session state
 if "deck_manager" not in st.session_state:
     st.session_state.deck_manager = DeckManager(
@@ -58,7 +62,12 @@ if st.session_state.mini_game:
 
     # Display the badges using st.markdown
     st.markdown(badges_html, unsafe_allow_html=True)
-    st.write(f"**{mini_game.task}**")  # Show the task/instruction
+    if "<br>" in mini_game.task:
+        items = mini_game.task.split("<br>")
+        for item in prefix_with_index(items):
+            st.write(item)
+    else:
+        st.write(f"{mini_game.task}")  # Show the task/instruction
     # Toggle to show/hide the solution
     show_solution = st.toggle(
         "Toon oplossing",

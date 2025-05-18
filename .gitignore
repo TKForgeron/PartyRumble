@@ -1,5 +1,6 @@
 # data files
 data/*.json
+ltest*
 */data/*.json
 
 # Byte-compiled / optimized / DLL files

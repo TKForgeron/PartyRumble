@@ -1,6 +1,7 @@
 from typing import Callable, Any
 from mini_games.mini_game import MiniGame
 import copy
+import random
 
 
 class DeckManager:
@@ -37,7 +38,7 @@ class DeckManager:
             else:
                 # Optionally handle missing base game
                 pass
-
+        random.shuffle(mini_games)
         decks: dict[str, list[MiniGame]] = {}
         for mini_game in mini_games:
             cat: str = str(mini_game.category).lower()
